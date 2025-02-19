@@ -8,21 +8,37 @@
 here is my snippet of code used for data inspection:
 
 ls -lh fang_et_al_genotypes.txt
+
 file fang_et_al_genotypes.txt
+
 head -n 10 fang_et_al_genotypes.txt  
+
 tail -n 10 fang_et_al_genotypes.txt  
+
 less fang_et_al_genotypes.txt
+
 wc fang_et_al_genotypes.txt
+
 wc -l fang_et_al_genotypes.txt
+
 wc -w fang_et_al_genotypes.txt
+
 wc -c fang_et_al_genotypes.txt
+
 awk -F'\t' '{print NF; exit}' fang_et_al_genotypes.txt
+
 awk -F'\t' '{print NF}' fang_et_al_genotypes.txt | sort -u 
+
 head -n 1 fang_et_al_genotypes.txt
+
 cut -f1 fang_et_al_genotypes.txt | sort | uniq | head -n 20
+
 cut -f1 fang_et_al_genotypes.txt | sort | uniq | wc -l
+
 grep -E "\bNA\b|\b\.\b|\b\?\b" fang_et_al_genotypes.txt | head -n 10
+
 cut -f1 fang_et_al_genotypes.txt | sort | uniq -d
+
 
 By inspecting this file I learned that:
 
