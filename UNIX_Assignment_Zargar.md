@@ -6,6 +6,7 @@
 
 
 here is my snippet of code used for data inspection:
+
 ls -lh fang_et_al_genotypes.txt
 file fang_et_al_genotypes.txt
 head -n 10 fang_et_al_genotypes.txt  
