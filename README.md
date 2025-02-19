@@ -1,8 +1,23 @@
-## Course Assignments
+#You can find these files in Maize folder: 
 
-A description of files within this folder:
+10 files (1 for each chromosome) with SNPs ordered based on increasing position values
 
-* `UNIX_Assignment.md` and `UNIX_Assignment.pdf`: Instructions for the assignment
-* `UNIX_Assignment_Template.md` and `UNIX_Assignment_Template.pdf`: An example of what your Markdown file should look like when you submit your assignment, including some Markdown syntax that should be helpful for you. The pdf shows how this file is rendered using a tool such as "MacDown"
-* The two files `fang_et_al_genotypes.txt` and `snp_positions.txt` are data files you will be reformatting for the assignment
-* The `transpose.awk` script will be needed to transpose the data (see instructions in `UNIX_Assignment.md`)
+10 files (1 for each chromosome) with SNPs ordered based on decreasing position values
+
+1 file with all SNPs with unknown positions in the genome 
+
+1 file with all SNPs with multiple positions in the genome 
+
+#You can find these files in Teosinte folder:
+
+10 files (1 for each chromosome) with SNPs ordered based on increasing position values
+
+10 files (1 for each chromosome) with SNPs ordered based on decreasing position values
+
+1 file with all SNPs with unknown positions in the genome 
+
+1 file with all SNPs with multiple positions in the genome 
+
+You can also find intermedate files in temp_files folder
+
+note that result and description of each line of commands are in Unix_Assignment_zargar file.
