@@ -52,21 +52,36 @@ By inspecting this file I learned that:
 
 ###Attributes of `snp_position.txt`
 
-here is my snippet of code used for data inspection
+here is my snippet of code used for data inspection:
+
 ls -lh snp_position.txt
+
 file snp_position.txt
+
 head -n 10 snp_position.txt
+
 tail -n 10 snp_position.txt
+
 less snp_position.txt
+
 wc snp_position.txt
+
 wc -l snp_position.txt
+
 wc -w snp_position.txt
+
 wc -c snp_position.txt
+
 awk -F'\t' '{print NF; exit}' snp_position.txt
+
 awk -F'\t' '{print NF}' snp_position.txt | sort -u
+
 head -n 1 snp_position.txt
+
 cut -f1 snp_position.txt | sort | uniq | head -n 20
+
 cut -f1 snp_position.txt | sort | uniq | wc -l
+
 cut -f1 snp_position.txt | sort | uniq -d
 
 
