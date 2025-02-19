@@ -189,41 +189,62 @@ Following steps are for making folders for better undeerstanding:
 
 
 Step 1: Create Folder Structure
+
 Create Maize and Teosinte folders
+
 mkdir -p Maize/increasing Maize/decreasing
+
 mkdir -p Teosinte/increasing Teosinte/decreasing
 
 Step 2: Move Maize Files
+
 Move increasing position files for Maize
+
 mv maize_chr*_asc.txt Maize/increasing/
 
 Move decreasing position files for Maize
+
 mv maize_chr*_desc.txt Maize/decreasing/
 
 Move unknown and multiple files for Maize
+
 mv maize_unknown.txt maize_multiple.txt Maize/
 
 Step 3: Move Teosinte Files
+
 Move increasing position files for Teosinte
+
 mv teosinte_chr*_asc.txt Teosinte/increasing/
 
 Move decreasing position files for Teosinte
+
 mv teosinte_chr*_desc.txt Teosinte/decreasing/
 
 Move unknown and multiple files for Teosinte
+
 mv teosinte_unknown.txt teosinte_multiple.txt Teosinte/
 
 Step 4: Create a Folder for Temporary Files
+
 Create a folder named "temp_files" in the current directory
+
 mkdir -p temp_files
 
 Step 5: Move Temporary Files into the Folder
+
 Move all intermediate maize-related files
-mv maize_data.txt maize_transposed.txt sorted_maize.txt header.txt maize_final.txt maize_joined.txt maize_sorted_asc.txt maize_sorted_desc.txt maize_header.txt temp_files/
+
+mv maize_data.txt maize_transposed.txt sorted_maize.txt header.txt maize_final.txt maize_joined.txt maize_sorted_asc.txt 
+
+maize_sorted_desc.txt maize_header.txt temp_files/
 
 Move all intermediate teosinte-related files
-mv teosinte_data.txt teosinte_transposed.txt sorted_teosinte.txt teosinte_final.txt teosinte_joined.txt teosinte_sorted_asc.txt teosinte_sorted_desc.txt teosinte_header.txt temp_files/
+
+mv teosinte_data.txt teosinte_transposed.txt sorted_teosinte.txt teosinte_final.txt teosinte_joined.txt teosinte_sorted_asc.txt 
+
+teosinte_sorted_desc.txt teosinte_header.txt temp_files/
 
 Move SNP-related intermediate files
+
 mv snp_header.txt sorted_snp.txt sorted_snp_with_header.txt snp_trimmed.txt temp_files/
 
