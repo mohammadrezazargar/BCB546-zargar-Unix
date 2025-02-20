@@ -99,90 +99,131 @@ By inspecting this file I learned that:
 ###Maize Data
 
 Step 1: Extract ZMMIL, ZMMLR, and ZMMMR from the Group column
+
 awk '$3 ~ /Group|ZMMIL|ZMMLR|ZMMMR/' fang_et_al_genotypes.txt > maize_data.txt
 
 Step 2: Transpose the extracted data
+
 awk -f transpose.awk maize_data.txt > maize_transposed.txt
 
 Step 3: Sort the transposed file and add the header
 
 head -n 1 maize_transposed.txt > header.txt
+
 tail -n +4 maize_transposed.txt | sort -k1,1 > sorted_maize.txt
+
 cat header.txt sorted_maize.txt > sorted_maize_with_header.txt
 
 Step 4: Process SNP position data
+
 head -n 1 snp_position.txt > snp_header.txt
+
 tail -n +2 snp_position.txt | sort -k1,1 > sorted_snp.txt
+
 cat snp_header.txt sorted_snp.txt > sorted_snp_with_header.txt
+
 cut -f 1,3,4 sorted_snp_with_header.txt > snp_trimmed.txt
 
 Step 5: Join SNP data with maize data
+
 sed 's/Sample_ID/SNP_ID/' sorted_maize_with_header.txt > maize_final.txt
+
 join -1 1 -2 1 -t $'\t' snp_trimmed.txt maize_final.txt > maize_joined.txt
 
 Step 6: Extract unknown and multiple positions
+
 grep -E "(Chromosome|unknown)" maize_joined.txt > maize_unknown.txt
+
 grep -E "(Chromosome|multiple)" maize_joined.txt > maize_multiple.txt
 
 Step 7: Sort by increasing position and replace missing data
+
 head -n 1 maize_joined.txt > maize_header.txt
+
 tail -n +2 maize_joined.txt | sort -k3,3n > maize_sorted_asc.txt
+
 cat maize_header.txt maize_sorted_asc.txt | sed 's!?/?!?!g' > maize_final_asc.txt
 
 Step 8: Sort by decreasing position and replace missing data
+
 tail -n +2 maize_joined.txt | sort -k3,3nr > maize_sorted_desc.txt
+
 cat maize_header.txt maize_sorted_desc.txt | sed 's!?/?!-!g' > maize_final_desc.txt
 
-Step 9: Extract chromosomes (using a loop for efficiency)
+Step 9: Extract chromosomes 
+
 for i in {1..10}; do
+
     awk -v chr="$i" '$2 == chr' maize_final_asc.txt > maize_chr${i}_asc.txt
+    
     awk -v chr="$i" '$2 == chr' maize_final_desc.txt > maize_chr${i}_desc.txt
+    
 done
 
 
 Here is my brief description of what this code does:
+
 I wrote brief description of each line in previous section
 
 
 ###Teosinte Data
 
 here is my snippet of code used for data processing
+
 Step 1: Extract ZMPBA, ZMPIL, and ZMPJA from the Group column
+
 awk '$3 ~ /Group|ZMPBA|ZMPIL|ZMPJA/' fang_et_al_genotypes.txt > teosinte_data.txt
 
 Step 2: Transpose the extracted data
+
 awk -f transpose.awk teosinte_data.txt > teosinte_transposed.txt
 
 Step 3: Sort the transposed file and add the header
+
 head -n 1 teosinte_transposed.txt > header.txt
+
 tail -n +4 teosinte_transposed.txt | sort -k1,1 > sorted_teosinte.txt
+
 cat header.txt sorted_teosinte.txt > sorted_teosinte_with_header.txt
 
 Step 4: Join SNP data with teosinte data
+
 sed 's/Sample_ID/SNP_ID/' sorted_teosinte_with_header.txt > teosinte_final.txt
+
 join -1 1 -2 1 -t $'\t' snp_trimmed.txt teosinte_final.txt > teosinte_joined.txt
 
 Step 5: Extract unknown and multiple positions
+
 grep -E "(Chromosome|unknown)" teosinte_joined.txt > teosinte_unknown.txt
+
 grep -E "(Chromosome|multiple)" teosinte_joined.txt > teosinte_multiple.txt
 
 Step 6: Sort by increasing position and replace missing data
+
 head -n 1 teosinte_joined.txt > teosinte_header.txt
+
 tail -n +2 teosinte_joined.txt | sort -k3,3n > teosinte_sorted_asc.txt
+
 cat teosinte_header.txt teosinte_sorted_asc.txt | sed 's!?/?!?!g' > teosinte_final_asc.txt
 
 Step 7: Sort by decreasing position and replace missing data
+
 tail -n +2 teosinte_joined.txt | sort -k3,3nr > teosinte_sorted_desc.txt
+
 cat teosinte_header.txt teosinte_sorted_desc.txt | sed 's!?/?!-!g' > teosinte_final_desc.txt
 
-Step 8: Extract chromosomes (using a loop for efficiency)
+Step 8: Extract chromosomes 
 
 for i in {1..10}; do
+
     awk -v chr="$i" '$2 == chr' teosinte_final_asc.txt > teosinte_chr${i}_asc.txt
+    
     awk -v chr="$i" '$2 == chr' teosinte_final_desc.txt > teosinte_chr${i}_desc.txt
+    
 done
 
 Here is my brief description of what this code does:
+
 You can Find Breif Description of each line above that.
 
 Following steps are for making folders for better undeerstanding:
